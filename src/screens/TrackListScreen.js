@@ -1,11 +1,15 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, Button } from 'react-native'
 
-const TrackListScreen = _ => {
+const TrackListScreen = ({ navigation }) => {
     return (
-        <View>
+        <>
             <Text style={{fontSize:48}}>TrackListScreen</Text>
-        </View>
+            <Button
+                title={'Track Detail'}
+                onPress={_ => navigation.navigate('TrackDetailScreen')}
+            />
+        </>
     )
 }
 
