@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Text, Button, Input } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { View } from 'react-native'
+import { Context as AuthContext } from '../context/AuthContext'
 
 const SignupScreen = ({ navigation }) => {
+    const { state, signup } = useContext(AuthContext)
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
     return (
@@ -30,7 +32,15 @@ const SignupScreen = ({ navigation }) => {
                     secureTextEntry // same as secureTextEntry={true}
                 />
             </Spacer>
-            <Spacer><Button title='submit' /></Spacer>
+            <Spacer>
+                <Button
+                    title='submit'
+                    onPress={() => { 
+                        console.log('pressed')
+                        return signup({ email, password })} 
+                    }
+                />
+            </Spacer>
         </View>
     )
 }
