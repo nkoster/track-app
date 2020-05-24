@@ -1,47 +1,29 @@
 import React, { useState, useContext } from 'react'
 import { Text, Button, Input } from 'react-native-elements'
 import Spacer from '../components/Spacer'
-import { View } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import { Context as AuthContext } from '../context/AuthContext'
+import AuthForm from '../components/AuthForm'
 
 const SignupScreen = ({ navigation }) => {
     const { state, signup } = useContext(AuthContext)
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('')
+
     return (
         <View style={styles.container}>
+            <AuthForm
+                headerText='sign up for tracker'
+                errorMessage={state.errorMessage}
+                onSubmit={signup}
+                submitButtonText='submit'
+            />
             <Spacer />
-            <Spacer><Text h3>sign up for tracker</Text></Spacer>
-            <Spacer />
-            <Spacer>
-                <Input
-                    label='email'
-                    value={email}
-                    onChangeText={setEmail}
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                />
-            </Spacer>
-            <Spacer>
-                <Input
-                    label='password'
-                    value={password}
-                    onChangeText={setPassword}
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                    secureTextEntry // same as secureTextEntry={true}
-                />
-            </Spacer>
-            { state.errorMessage
-                ? <Text style={styles.errorMessage}>{state.errorMessage}</Text>
-                : null
-            }
-            <Spacer>
-                <Button
-                    title='submit'
-                    onPress={() => signup({ email, password })}
-                />
-            </Spacer>
+            <TouchableOpacity onPress={_ => navigation.navigate('SigninScreen')} >
+                <Spacer>
+                    <Text style={styles.link}>
+                        Already have an account? Click here
+                    </Text>
+                </Spacer>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -58,12 +40,10 @@ const styles = {
         justifyContent: 'center',
         marginBottom: 150
     },
-    errorMessage: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: 'red',
-        marginLeft: 8
-    }
+    link: {
+        color: 'gray',
+        textAlign: 'center'
+    },
 }
 
 export default SignupScreen
