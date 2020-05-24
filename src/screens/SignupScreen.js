@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Text } from 'react-native-elements'
 import Spacer from '../components/Spacer'
-import { View, TouchableOpacity } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import { Context as AuthContext } from '../context/AuthContext'
 import AuthForm from '../components/AuthForm'
 import NavLink from '../components/NavLink'
@@ -20,7 +20,7 @@ const SignupScreen = ({ navigation }) => {
             <Spacer />
             <NavLink
                 title='Already have an account? Click here'
-                nav={_ => navigation.navigate('SigninScreen')}
+                routeName='SigninScreen'
             />
         </View>
     )
@@ -32,7 +32,7 @@ SignupScreen.navigationOptions = _ => {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
@@ -42,6 +42,6 @@ const styles = {
         color: 'gray',
         textAlign: 'center'
     },
-}
+})
 
 export default SignupScreen
