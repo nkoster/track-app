@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { Text, Button, Input } from 'react-native-elements'
+import React, { useContext } from 'react'
+import { Text } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 import { View, TouchableOpacity } from 'react-native'
 import { Context as AuthContext } from '../context/AuthContext'
