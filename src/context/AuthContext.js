@@ -18,10 +18,9 @@ const signup = dispatch => async ({email, password}) => {
         const response = await trackerApi.post('/signup', { email, password })
         await AsyncStorage.setItem('token', response.data.token)
         dispatch({ type: 'signup', payload: response.data.token})
-        navigate('mainFlow', {})
+        navigate('TrackListScreen', {})
     } catch(err) {
-        // dispatch({ type: 'add_error', payload: `${email} already in use` })
-        dispatch({ type: 'add_error', payload: err.message })
+        dispatch({ type: 'add_error', payload: `${email} already in use` })
     }
 }
 
