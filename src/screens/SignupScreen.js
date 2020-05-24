@@ -4,6 +4,7 @@ import Spacer from '../components/Spacer'
 import { View, TouchableOpacity } from 'react-native'
 import { Context as AuthContext } from '../context/AuthContext'
 import AuthForm from '../components/AuthForm'
+import NavLink from '../components/NavLink'
 
 const SignupScreen = ({ navigation }) => {
     const { state, signup } = useContext(AuthContext)
@@ -17,13 +18,10 @@ const SignupScreen = ({ navigation }) => {
                 submitButtonText='submit'
             />
             <Spacer />
-            <TouchableOpacity onPress={_ => navigation.navigate('SigninScreen')} >
-                <Spacer>
-                    <Text style={styles.link}>
-                        Already have an account? Click here
-                    </Text>
-                </Spacer>
-            </TouchableOpacity>
+            <NavLink
+                title='Already have an account? Click here'
+                nav={_ => navigation.navigate('SigninScreen')}
+            />
         </View>
     )
 }
