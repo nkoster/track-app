@@ -39,10 +39,7 @@ const SignupScreen = ({ navigation }) => {
             <Spacer>
                 <Button
                     title='submit'
-                    onPress={() => { 
-                        console.log('pressed')
-                        return signup({ email, password })} 
-                    }
+                    onPress={() => signup({ email, password })}
                 />
             </Spacer>
         </View>
@@ -65,7 +62,7 @@ const styles = {
         fontSize: 16,
         fontWeight: 'bold',
         color: 'red',
-        marginLeft: 10
+        marginLeft: 8
     }
 }
 
