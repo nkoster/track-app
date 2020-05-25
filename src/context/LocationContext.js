@@ -6,9 +6,9 @@ const locationReducer = (state, action) => {
     }
 }
 
-const startRecording = dispatch => {}
-const stopRecording = dispatch => {}
-const addLocation = dispatch => {}
+const startRecording = dispatch => _ => {}
+const stopRecording = dispatch => _ => {}
+const addLocation = dispatch => _ => {}
 
 export const { Provider, Context } = createDataContext(
     locationReducer,
