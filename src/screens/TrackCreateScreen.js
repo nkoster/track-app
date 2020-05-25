@@ -1,5 +1,5 @@
 import '../_mockLocation'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { SafeAreaView } from 'react-navigation'
 import {
     requestPermissionsAsync,
@@ -8,8 +8,10 @@ import {
 } from 'expo-location'
 import { Text } from 'react-native-elements'
 import TrackMap from '../components/TrackMap'
+import { Context as LocationContext } from '../context/LocationContext'
 
 const TrackCreateScreen = _ => {
+    const { addLocation } = useContext(LocationContext)
     const [err, setErr] = useState(null)
     const startWatching = async _ => {
         try {
@@ -19,7 +21,7 @@ const TrackCreateScreen = _ => {
                 timeInterval: 1000,
                 distanceInterval: 10
             }, location => {
-                // console.log(location.coords.latitude)
+                addLocation(location)
             })
         } catch (err) {
             setErr(err)
