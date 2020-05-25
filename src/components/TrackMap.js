@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { StyleSheet, ActivityIndicator } from 'react-native'
-import MapView, { Polyline } from 'react-native-maps'
+import MapView, { Polyline, Circle } from 'react-native-maps'
 import { Context as LocationContext } from '../context/LocationContext'
 import { Accuracy } from 'expo-location'
 
@@ -15,8 +15,8 @@ const TrackMap = _ => {
             style={styles.map}
             initialRegion={{
                 ...currentLocation.coords,
-                latitudeDelta: 0.1,
-                longitudeDelta: 0.1
+                latitudeDelta: 0.01,
+                longitudeDelta: 0.01
             }}
             region={{
                 ...currentLocation.coords,
@@ -24,6 +24,12 @@ const TrackMap = _ => {
                 longitudeDelta: 0.01
             }}
         >
+            <Circle
+                center={currentLocation.coords}
+                radius={120}
+                strokeColor='rgba(158,158,255,1.0)'
+                fillColor='rgba(158,158,255,0.3)'
+            />
         </MapView>
     )
 }
