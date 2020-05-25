@@ -18,17 +18,18 @@ const TrackMap = _ => {
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01
             }}
-            region={{
-                ...currentLocation.coords,
-                latitudeDelta: 0.01,
-                longitudeDelta: 0.01
-            }}
+            // region={{
+            //     ...currentLocation.coords,
+            //     latitudeDelta: 0.01,
+            //     longitudeDelta: 0.01
+            // }}
         >
             <Circle
                 center={currentLocation.coords}
-                radius={120}
-                strokeColor='rgba(158,158,255,1.0)'
-                fillColor='rgba(158,158,255,0.3)'
+                radius={66}
+                strokeColor='rgba(0,0,0,1.0)'
+                strokeWidth={3}
+                fillColor='rgba(255,255,255,0.2)'
             />
         </MapView>
     )
