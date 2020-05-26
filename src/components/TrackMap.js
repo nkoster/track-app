@@ -37,7 +37,7 @@ const TrackMap = _ => {
 
 const styles = StyleSheet.create({
     map: {
-        height: 400
+        height: 240
     }
 })
 
