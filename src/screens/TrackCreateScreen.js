@@ -9,9 +9,10 @@ import TrackForm from '../components/TrackForm'
 import Spacer from '../components/Spacer'
 
 const TrackCreateScreen = ({ isFocused }) => {
-    const { addLocation } = useContext(LocationContext)
-    const [err] = useLocation(isFocused, addLocation)
-    // console.log(isFocused)
+    const { state, addLocation } = useContext(LocationContext)
+    const [err] = useLocation(isFocused, location => {
+        addLocation(location, state.recording)
+    })
     return (
         <SafeAreaView forceInset={{ top: 'always' }}>
             <Text h2>Create a Track</Text>
