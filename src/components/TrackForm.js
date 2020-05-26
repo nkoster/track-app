@@ -6,11 +6,12 @@ import { Context as LocationContext } from '../context/LocationContext'
 
 const TrackForm = _ => {
     const {
-        state: { name, recording },
+        state: { name, recording, locations },
         startRecording,
         stopRecording,
         changeName
     } = useContext(LocationContext)
+    console.log(locations.length)
     return (
         <View>
             <Spacer>
@@ -23,11 +24,11 @@ const TrackForm = _ => {
             </Spacer>
             {recording
                 ? <Button
-                    title='stop recording track'
+                    title='stop'
                     onPress={stopRecording}
                 />
                 : <Button
-                    title='start recording track'
+                    title='start recording'
                     onPress={startRecording}
                 />
             }
