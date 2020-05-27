@@ -9,6 +9,7 @@ const locationReducer = (state, action) => {
         case 'stop_recording':
             return { ...state, recording: false }
         case 'add_location':
+            console.log(state.locations.length)
             return { ...state, locations: [...state.locations, action.payload] }
         case 'change_name':
             return { ...state, name: action.payload }
