@@ -28,6 +28,11 @@ export default (shouldTrack, callback) => {
             subscriber.remove()
             setSubscriber(null)
         }
-    }, [shouldTrack])
+        return _ => {
+            if (subscriber) {
+                subscriber.remove()
+            }
+        }
+    }, [shouldTrack, callback])
     return [err]
 }
