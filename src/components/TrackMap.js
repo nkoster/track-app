@@ -29,7 +29,7 @@ const TrackMap = _ => {
                 radius={66}
                 strokeColor='rgba(0,0,0,1.0)'
                 strokeWidth={3}
-                fillColor='rgba(255,255,255,0.2)'
+                fillColor='rgba(255,255,0,0.5)'
             />
         </MapView>
     )
