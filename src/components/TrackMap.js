@@ -5,7 +5,7 @@ import { Context as LocationContext } from '../context/LocationContext'
 import { Accuracy } from 'expo-location'
 
 const TrackMap = _ => {
-    const { state: { currentLocation } } = useContext(LocationContext)
+    const { state: { currentLocation, locations } } = useContext(LocationContext)
     if (!currentLocation) {
         return <ActivityIndicator size='large' style={{ marginTop: 200 }} />
     }
@@ -30,6 +30,9 @@ const TrackMap = _ => {
                 strokeColor='rgba(0,0,0,1.0)'
                 strokeWidth={3}
                 fillColor='rgba(255,255,0,0.5)'
+            />
+            <Polyline
+                coordinates={locations.map(loc => loc.coords)}
             />
         </MapView>
     )
