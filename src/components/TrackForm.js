@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import Spacer from './Spacer'
@@ -11,13 +11,13 @@ const TrackForm = _ => {
         stopRecording,
         changeName
     } = useContext(LocationContext)
-    console.log(locations.length)
     return (
         <View>
             <Spacer>
             <Input
-                value={_ => name}
-                onChange={changeName}
+                value={name}
+                defaultValue='my track'
+                onChangeText={changeName}
                 placeholder='please enter a name here'
                 label='TRACK NAME'
             />
