@@ -1,6 +1,6 @@
 import * as Location from 'expo-location'
 
-const tenMetersWithDegrees = 0.0001
+const fiveMetersWithDegrees = 0.00005
 
 const getLocation = increment => {
     return {
@@ -11,8 +11,8 @@ const getLocation = increment => {
             accuracy: 5,
             altitudeAccuracy: 5,
             altitude: 5,
-            longitude: 5.2142 + increment * tenMetersWithDegrees,
-            latitude: 52.3465 + increment * tenMetersWithDegrees
+            longitude: 5.2142 + increment * fiveMetersWithDegrees,
+            latitude: 52.3465 + increment * fiveMetersWithDegrees
         }
     }
 }
