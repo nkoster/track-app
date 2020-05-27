@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 import {
     requestPermissionsAsync,
     watchPositionAsync,
@@ -7,31 +7,27 @@ import {
 
 export default (shouldTrack, callback) => {
     const [err, setErr] = useState(null)
-    const [subscriber, setSubscriber] = useState(null)
-    const startWatching = async _ => {
-        try {
-            await requestPermissionsAsync()
-            const sub = await watchPositionAsync({
-                accuracy: Accuracy.BestForNavigation,
-                timeInterval: 1000,
-                distanceInterval: 10
-            }, callback)
-            setSubscriber(sub)
-        } catch (e) {
-            setErr(e)
-        }
-    }
     useEffect(_ => {
-        if (shouldTrack) {
-            startWatching()
-        } else {
-            subscriber.remove()
-            setSubscriber(null)
-        }
-        return _ => {
-            if (subscriber) {
-                subscriber.remove()
+        let subscriber
+        const startWatching = async _ => {
+            try {
+                await requestPermissionsAsync()
+                subscriber = await watchPositionAsync({
+                    accuracy: Accuracy.BestForNavigation,
+                    timeInterval: 1000,
+                    distanceInterval: 10
+                }, callback)
+            } catch (e) {
+                setErr(e)
             }
+        }
+        const stop = _ => {
+            subscriber && subscriber.remove()
+            subscriber = null
+        }
+        shouldTrack ? startWatching() : stop()
+        return _ => {
+            stop()
         }
     }, [shouldTrack, callback])
     return [err]
