@@ -22,15 +22,21 @@ const TrackForm = _ => {
                 label='TRACK NAME'
             />
             </Spacer>
-            {recording
+            {
+                recording
                 ? <Button
                     title='stop'
-                    onPress={stopRecording}
-                />
+                    onPress={stopRecording} />
                 : <Button
                     title='start recording'
-                    onPress={startRecording}
-                />
+                    onPress={startRecording} />
+            }
+            <Spacer />
+            {
+                !recording && locations.length && name
+                ? <Button
+                    title='save' />
+                : null
             }
         </View>
     )
