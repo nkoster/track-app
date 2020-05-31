@@ -12,8 +12,17 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen'
 import { Provider as AuthProvider } from './src/context/AuthContext'
 import { Provider as LocationProvider } from './src/context/LocationContext'
 import { Provider as TrackProvider } from './src/context/TrackContext'
-
+import { Foundation } from '@expo/vector-icons'; 
 import { setNavigator } from './src/navigationRef'
+
+const trackListFlow = createStackNavigator({
+  TrackListScreen, TrackDetailScreen
+})
+
+trackListFlow.navigationOptions = {
+  title: 'TRACKS',
+  tabBarIcon: <Foundation name='list' size={20} color='silver' />
+}
 
 const switchNavigator = createSwitchNavigator({
   InitialScreen,
@@ -21,9 +30,7 @@ const switchNavigator = createSwitchNavigator({
     SignupScreen, SigninScreen
   }),
   mainFlow: createBottomTabNavigator({
-    trackFlow: createStackNavigator({
-      TrackListScreen, TrackDetailScreen
-    }),
+    trackListFlow,
     TrackCreateScreen, AccountScreen
   })
 })
