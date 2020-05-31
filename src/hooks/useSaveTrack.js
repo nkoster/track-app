@@ -5,9 +5,10 @@ import { Context as LocationContext } from '../context/LocationContext'
 export default _ => {
     const { createTrack } = useContext(TrackContext)
 
-    const { state: { locations, name } } = useContext(LocationContext)
-    const saveTrack = _ => {
-        createTrack(name, locations)
+    const { state: { locations, name }, reset } = useContext(LocationContext)
+    const saveTrack = async _ => {
+        await createTrack(name, locations)
+        reset()
     }
     return [saveTrack]
 }
