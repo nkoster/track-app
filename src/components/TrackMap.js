@@ -3,7 +3,7 @@ import { StyleSheet, ActivityIndicator } from 'react-native'
 import MapView, { Polyline, Circle } from 'react-native-maps'
 import { Context as LocationContext } from '../context/LocationContext'
 
-const TrackMap = _ => {
+const TrackMap = ({ follow }) => {
     const { state: { currentLocation, locations } } = useContext(LocationContext)
     if (!currentLocation) {
         return <ActivityIndicator size='large' style={{ marginTop: 200 }} />
@@ -16,11 +16,11 @@ const TrackMap = _ => {
                 latitudeDelta: 0.01,
                 longitudeDelta: 0.01
             }}
-            // region={{
-            //     ...currentLocation.coords,
-            //     latitudeDelta: 0.01,
-            //     longitudeDelta: 0.01
-            // }}
+            region={ follow ? {
+                ...currentLocation.coords,
+                latitudeDelta: 0.01,
+                longitudeDelta: 0.01
+            } : null }
         >
             <Circle
                 center={currentLocation.coords}
@@ -38,7 +38,7 @@ const TrackMap = _ => {
 
 const styles = StyleSheet.create({
     map: {
-        height: 290
+        height: 250
     }
 })
 
