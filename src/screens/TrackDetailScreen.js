@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Context as TrackContext } from '../context/TrackContext'
 import MapView, { Polyline } from 'react-native-maps'
-import Spacer from '../components/Spacer'
+import { Entypo } from '@expo/vector-icons'
 
 const TrackDetailScreen = ({ navigation }) => {
     const _id = navigation.getParam('_id')
@@ -11,9 +11,6 @@ const TrackDetailScreen = ({ navigation }) => {
     const initialCoords = track.locations[0].coords
     return (
         <View>
-            <Spacer>
-                <Text style={styles.title}>current track: {track.name}</Text>
-            </Spacer>
             <MapView
                 style={styles.map}
                 initialRegion={{
@@ -25,22 +22,38 @@ const TrackDetailScreen = ({ navigation }) => {
                 <Polyline
                     coordinates={track.locations.map(location => location.coords)}
                 />
+                <Text style={styles.title}>{track.name}</Text>
             </MapView>
         </View>
     )
 }
 
-TrackDetailScreen.navigationOptions = {
-    title: 'track details'
+TrackDetailScreen.navigationOptions = ({navigation}) => {
+    const _id = navigation.getParam('_id')
+    return {
+        title: 'track details',
+        headerRight: _ => (
+            <TouchableOpacity
+                onPress={_ => navigation.navigate('TrackDeleteScreen', { _id })}
+            >
+                <Entypo name='trash' size={20} color='black' style={{paddingRight:7}} />
+            </TouchableOpacity>
+        )
+
+    }
 }
 
 const styles = StyleSheet.create({
     map: {
-        height: 500
+        height: 553
     },
     title: {
         textAlign: 'center',
-        fontSize: 16
+        fontSize: 14,
+        fontWeight: 'bold',
+        paddingTop: 4,
+        paddingBottom: 4,
+        backgroundColor: 'rgba(255,255,255,0.5)'
     }
 })
 
