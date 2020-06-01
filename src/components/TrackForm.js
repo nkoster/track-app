@@ -28,9 +28,11 @@ const TrackForm = _ => {
                 name
                 ?   recording
                     ? <Button
+                        buttonStyle={{backgroundColor:'#e47'}}
                         title='stop'
                         onPress={stopRecording} />
                     : <Button
+                        buttonStyle={{backgroundColor:'#5090ff'}}
                         title='start recording'
                         onPress={startRecording} />
                 : null
@@ -39,7 +41,8 @@ const TrackForm = _ => {
             {
                 !recording && locations.length && name
                 ? <Button
-                    title='save'
+                    buttonStyle={{backgroundColor:'#555'}}
+                    title={`save ${name}`}
                     onPress={saveTrack} />
                 : null
             }
