@@ -23,6 +23,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.amazinggrooves.tracker",
       "buildNumber": "1.0.0"
-    }
+    },
+    "description": "track your track"
   }
 }
