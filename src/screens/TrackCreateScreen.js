@@ -1,5 +1,6 @@
 import '../_mockLocation'
 import React, { useContext, useCallback } from 'react'
+import { AntDesign } from '@expo/vector-icons'; 
 import { SafeAreaView, withNavigationFocus } from 'react-navigation'
 import { Text } from 'react-native-elements'
 import TrackMap from '../components/TrackMap'
@@ -16,7 +17,6 @@ const TrackCreateScreen = ({ isFocused }) => {
     const [err] = useLocation(isFocused || recording, callback)
     return (
         <SafeAreaView forceInset={{ top: 'always' }}>
-            <Text h2>Create a Track</Text>
             <TrackMap />
             { err ? <Text>Please enable location services</Text> : null }
             <Spacer />
@@ -25,6 +25,11 @@ const TrackCreateScreen = ({ isFocused }) => {
             </Spacer>
         </SafeAreaView>
     )
+}
+
+TrackCreateScreen.navigationOptions = {
+    title: 'ADD TRACK',
+    tabBarIcon: <AntDesign name='plussquare' size={20} color='silver' />
 }
 
 export default withNavigationFocus(TrackCreateScreen)
