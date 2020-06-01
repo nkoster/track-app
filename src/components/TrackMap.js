@@ -2,14 +2,12 @@ import React, { useContext } from 'react'
 import { StyleSheet, ActivityIndicator } from 'react-native'
 import MapView, { Polyline, Circle } from 'react-native-maps'
 import { Context as LocationContext } from '../context/LocationContext'
-import { Accuracy } from 'expo-location'
 
 const TrackMap = _ => {
     const { state: { currentLocation, locations } } = useContext(LocationContext)
     if (!currentLocation) {
         return <ActivityIndicator size='large' style={{ marginTop: 200 }} />
     }
-    // console.log(currentLocation)
     return (
         <MapView
             style={styles.map}
