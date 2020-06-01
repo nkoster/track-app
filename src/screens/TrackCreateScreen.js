@@ -1,8 +1,8 @@
 // import '../_mockLocation'
-import React, { useContext, useCallback } from 'react'
+import React, { useState, useContext, useCallback } from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import { SafeAreaView, withNavigationFocus } from 'react-navigation'
-import { Text } from 'react-native-elements'
+import { Text, CheckBox } from 'react-native-elements'
 import TrackMap from '../components/TrackMap'
 import { Context as LocationContext } from '../context/LocationContext'
 import useLocation from '../hooks/useLocation'
@@ -11,13 +11,20 @@ import Spacer from '../components/Spacer'
 
 const TrackCreateScreen = ({ isFocused }) => {
     const { state: { recording }, addLocation } = useContext(LocationContext)
+    const [follow, setFollow] = useState(false)
     const callback = useCallback(location => {
         addLocation(location, recording)
     }, [recording])
     const [err] = useLocation(isFocused || recording, callback)
     return (
         <SafeAreaView forceInset={{ top: 'always' }}>
-            <TrackMap />
+            <CheckBox
+                center
+                title={follow ? 'stop following' : 'follow'}
+                onPress={_ => setFollow(!follow)}
+                checked={follow}
+            />
+            <TrackMap follow={follow} />
             { err ? <Text>Please enable location services</Text> : null }
             <Spacer />
             <Spacer>
