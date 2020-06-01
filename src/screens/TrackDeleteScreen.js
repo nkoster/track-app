@@ -14,6 +14,7 @@ const TrackDeleteScreen = ({ navigation }) => {
             <Text style={styles.text} >You are about to delete this track forever!</Text>
             <Spacer>
             <Button
+                buttonStyle={{backgroundColor:'black'}}
                 title={`delete ${track.name}`}
                 onPress={_ => {
                     deleteTrack(_id)
