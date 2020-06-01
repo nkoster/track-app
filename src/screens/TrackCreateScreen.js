@@ -11,7 +11,7 @@ import Spacer from '../components/Spacer'
 
 const TrackCreateScreen = ({ isFocused }) => {
     const { state: { recording }, addLocation } = useContext(LocationContext)
-    const [follow, setFollow] = useState(false)
+    const [follow, setFollow] = useState(true)
     const callback = useCallback(location => {
         addLocation(location, recording)
     }, [recording])
@@ -19,6 +19,7 @@ const TrackCreateScreen = ({ isFocused }) => {
     return (
         <SafeAreaView forceInset={{ top: 'always' }}>
             <CheckBox
+                style={{height:10}}
                 center
                 title={follow ? 'stop following' : 'follow'}
                 onPress={_ => setFollow(!follow)}
