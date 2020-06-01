@@ -15,12 +15,26 @@ const fetchTracks = dispatch => async _ => {
     dispatch({ type: 'fetchTracks', payload: response.data })
 }
 
-const createTrack = dispatch => async (name, locations) => {
+const createTrack = _ => async (name, locations) => {
     await trackerApi.post('/track', { name, locations })
+}
+
+const deleteTrack = dispatch => async id => {
+    try {
+        await trackerApi.post('/delete', { id })
+        try {
+            const response = await trackerApi.get('/tracks')
+            dispatch({ type: 'fetchTracks', payload: response.data })
+        } catch (err) {
+            console.log('error getting tracks', err.message)
+        }
+    } catch (err) {
+        console.log('error deleting track', err.message)
+    }
 }
 
 export const { Provider, Context } = createDataContext(
     trackReducer,
-    { fetchTracks, createTrack },
+    { fetchTracks, createTrack, deleteTrack },
     []
 )
