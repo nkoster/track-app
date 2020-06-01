@@ -29,10 +29,8 @@ const TrackListScreen = ({ navigation }) => {
     )
 }
 
-TrackListScreen.navigationOptions = _ => {
-    return {
-        title: 'Tracks'
-    }
+TrackListScreen.navigationOptions = {
+    title: 'Tracks'
 }
 
 export default TrackListScreen
