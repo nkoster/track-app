@@ -18,19 +18,17 @@ const TrackCreateScreen = ({ isFocused }) => {
     const [err] = useLocation(isFocused || recording, callback)
     return (
         <SafeAreaView forceInset={{ top: 'always' }}>
-            <CheckBox
-                style={{height:10}}
-                center
-                title={follow ? 'stop following' : 'follow'}
-                onPress={_ => setFollow(!follow)}
-                checked={follow}
-            />
-            <TrackMap follow={follow} />
             { err ? <Text>Please enable location services</Text> : null }
             <Spacer />
             <Spacer>
                 <TrackForm />
             </Spacer>
+            <TrackMap follow={follow} />
+            <CheckBox
+                title='keep centered'
+                onPress={_ => setFollow(!follow)}
+                checked={follow}
+            />
         </SafeAreaView>
     )
 }
