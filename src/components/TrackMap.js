@@ -24,7 +24,7 @@ const TrackMap = ({ follow }) => {
         >
             <Circle
                 center={currentLocation.coords}
-                radius={66}
+                radius={33}
                 strokeColor='rgba(0,0,0,1.0)'
                 strokeWidth={3}
                 fillColor='rgba(255,255,0,0.5)'
@@ -38,7 +38,7 @@ const TrackMap = ({ follow }) => {
 
 const styles = StyleSheet.create({
     map: {
-        height: 250
+        height: 378
     }
 })
 
