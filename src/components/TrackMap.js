@@ -40,7 +40,7 @@ const TrackMap = ({ follow }) => {
 
 const styles = StyleSheet.create({
     map: {
-        height: 378
+        height: 404
     }
 })
 
