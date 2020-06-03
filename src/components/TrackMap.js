@@ -2,8 +2,10 @@ import React, { useContext } from 'react'
 import { StyleSheet, ActivityIndicator } from 'react-native'
 import MapView, { Polyline, Circle } from 'react-native-maps'
 import { Context as LocationContext } from '../context/LocationContext'
+import { useKeepAwake } from 'expo-keep-awake'
 
 const TrackMap = ({ follow }) => {
+    useKeepAwake()
     const { state: { currentLocation, locations } } = useContext(LocationContext)
     if (!currentLocation) {
         return <ActivityIndicator size='large' style={{ marginTop: 200 }} />
