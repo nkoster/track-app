@@ -38,7 +38,7 @@ const TrackListScreen = ({ navigation }) => {
 }
 
 TrackListScreen.navigationOptions = {
-    title: 'Tracks'
+    title: 'track history'
 }
 
 const styles = StyleSheet.create({
