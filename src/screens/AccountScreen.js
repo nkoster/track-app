@@ -23,7 +23,10 @@ const AccountScreen = _ => {
 
 AccountScreen.navigationOptions = {
     title: 'SIGN OUT',
-    tabBarIcon: <Feather name='users' size={20} color='silver' />
+    tabBarIcon: ({ tintColor }) => <Feather name='users' size={20} color={tintColor} />,
+    tabBarOptions: {
+        activeTintColor: '#5090ff',
+    }
 }
 
 export default AccountScreen
