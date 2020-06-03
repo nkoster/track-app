@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake'
 import {
     requestPermissionsAsync,
     watchPositionAsync,
@@ -15,8 +16,9 @@ export default (shouldTrack, callback) => {
                 subscriber = await watchPositionAsync({
                     accuracy: Accuracy.BestForNavigation,
                     timeInterval: 1000,
-                    distanceInterval: 10
+                    distanceInterval: 1
                 }, callback)
+                activateKeepAwake()
             } catch (e) {
                 setErr(e)
             }
@@ -24,6 +26,7 @@ export default (shouldTrack, callback) => {
         const stop = _ => {
             subscriber && subscriber.remove()
             subscriber = null
+            deactivateKeepAwake()
         }
         shouldTrack ? startWatching() : stop()
         return _ => {
