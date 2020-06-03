@@ -25,8 +25,18 @@
       "buildNumber": "1.0.0",
       "infoPlist": {
         "UIBackgroundModes": [
+          "audio",
           "location",
-          "fetch"
+          "voip",
+          "external-accessory",
+          "bluetooth-central",
+          "bluetooth-peripheral",
+          "fetch",
+          "remote-notification",
+          "processing"
+        ],
+        "WKBackgroundModes": [
+          "workout-processing"
         ]
       }
     },
