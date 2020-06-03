@@ -29,7 +29,7 @@ const TrackMap = ({ follow }) => {
                 radius={33}
                 strokeColor='rgba(0,0,0,1.0)'
                 strokeWidth={3}
-                fillColor='rgba(255,255,0,0.5)'
+                fillColor='rgba(0,220,255,0.5)'
             />
             <Polyline
                 coordinates={locations.map(loc => loc.coords)}
