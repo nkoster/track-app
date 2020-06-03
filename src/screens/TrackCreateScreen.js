@@ -35,7 +35,11 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 TrackCreateScreen.navigationOptions = {
     title: 'ADD TRACK',
-    tabBarIcon: <AntDesign name='plussquare' size={20} color='silver' />
+    tabBarIcon: ({ tintColor }) =>
+        <AntDesign name='plussquare' size={20} color={tintColor} />,
+    tabBarOptions: {
+        activeTintColor: '#5090ff',
+    }
 }
 
 export default withNavigationFocus(TrackCreateScreen)
