@@ -18,7 +18,7 @@ const TrackForm = _ => {
                 style={styles.input}
                 value={name}
                 onChangeText={changeName}
-                placeholder='please enter a name here'
+                placeholder='enter a name here'
                 label='TRACK NAME'
             />
             <View style={{flexDirection:'row'}}>
