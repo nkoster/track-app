@@ -22,7 +22,13 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.amazinggrooves.tracker",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      }
     },
     "description": "track your track"
   }
