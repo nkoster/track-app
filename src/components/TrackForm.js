@@ -17,8 +17,7 @@ const TrackForm = _ => {
             <Input
                 value={name}
                 onChangeText={changeName}
-                placeholder='enter a name here'
-                label='TRACK NAME'
+                placeholder='enter a track name here'
             />
             <View>
             {
