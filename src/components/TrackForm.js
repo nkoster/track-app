@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { View } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { Context as LocationContext } from '../context/LocationContext'
