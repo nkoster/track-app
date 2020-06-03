@@ -21,7 +21,7 @@ const TrackForm = _ => {
                 placeholder='enter a name here'
                 label='TRACK NAME'
             />
-            <View style={{flexDirection:'row'}}>
+            <View>
             {
                 name
                 ?   recording
@@ -30,20 +30,17 @@ const TrackForm = _ => {
                         buttonStyle={{backgroundColor:'#e47'}}
                         title='stop tracker'
                         onPress={stopRecording} />
-                    : <Button
-                        style={styles.button}
-                        buttonStyle={{backgroundColor:'#5090ff'}}
-                        title='start tracker'
-                        onPress={startRecording} />
-                : null
-            }
-            {
-                !recording && locations.length && name
-                ? <Button
-                    style={styles.button}
-                    buttonStyle={{backgroundColor:'#555'}}
-                    title={`save`}
-                    onPress={saveTrack} />
+                    : !recording && locations.length && name
+                        ? <Button
+                            style={styles.button}
+                            buttonStyle={{backgroundColor:'#496'}}
+                            title={'save this track'}
+                            onPress={saveTrack} />
+                        : <Button
+                            style={styles.button}
+                            buttonStyle={{backgroundColor:'#5090ff'}}
+                            title='start tracker'
+                            onPress={startRecording} />
                 : null
             }
             </View>
@@ -53,11 +50,11 @@ const TrackForm = _ => {
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row'
+        // flexDirection: 'column'
     },
     button: {
-        paddingHorizontal: 12,
-        marginBottom: 6
+        // paddingHorizontal: 12,
+        // marginBottom: 6
     },
     input: {
     }
