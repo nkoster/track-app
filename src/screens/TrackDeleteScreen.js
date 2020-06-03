@@ -11,10 +11,10 @@ const TrackDeleteScreen = ({ navigation }) => {
     const track = state.find(item => item._id === _id)
     return (
         <View>
-            <Text style={styles.text} >You are about to delete this track forever!</Text>
+            <Text style={styles.text} >you are about to delete this track forever!</Text>
             <Spacer>
             <Button
-                buttonStyle={{backgroundColor:'black'}}
+                buttonStyle={{backgroundColor:'#333'}}
                 title={track ? `delete ${track.name}` : ''}
                 onPress={_ => {
                     deleteTrack(_id)
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: 150,
         marginBottom: 20,
-        color: 'rgba(255,50,75,1.0)'
+        color: 'rgba(210,50,75,1.0)'
     }
 })
 export default TrackDeleteScreen
