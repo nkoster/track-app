@@ -12,7 +12,7 @@ const TrackMap = ({ follow }) => {
     }
     return (
         <MapView
-            mapType='hybrid'
+            mapType='standard'
             style={styles.map}
             initialRegion={{
                 ...currentLocation.coords,
@@ -27,20 +27,14 @@ const TrackMap = ({ follow }) => {
         >
             <Circle
                 center={currentLocation.coords}
-                radius={35}
-                strokeColor='black'
-                strokeWidth={4}
-            />
-            <Circle
-                center={currentLocation.coords}
                 radius={33}
-                strokeColor='#ffffffa0'
-                strokeWidth={4}
+                strokeColor='black'
+                strokeWidth={3}
                 fillColor='#5090ff50'
             />
             <Polyline
                 coordinates={locations.map(loc => loc.coords)}
-                strokeColor='white'
+                strokeColor='black'
             />
         </MapView>
     )
