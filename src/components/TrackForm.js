@@ -42,7 +42,7 @@ const TrackForm = _ => {
                                 onPress={data => {
                                     setSavePressed(true)
                                     saveTrack(data)}} />
-                            : <ActivityIndicator size={50} color='#600' />
+                            : <ActivityIndicator size={40} color='#600' />
                         : <Button
                             buttonStyle={{backgroundColor:'#5090ff'}}
                             title='start tracker'
