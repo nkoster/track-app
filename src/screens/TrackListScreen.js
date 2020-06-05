@@ -37,6 +37,7 @@ TrackListScreen.navigationOptions = {
 const styles = StyleSheet.create({
     list: {
         backgroundColor: 'white',
+        color: '#666',
         marginTop: 10,
         paddingLeft: 6,
         paddingTop: 3
