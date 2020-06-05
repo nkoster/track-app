@@ -4,7 +4,7 @@ import MapView, { Polyline, Circle } from 'react-native-maps'
 import { Context as LocationContext } from '../context/LocationContext'
 import { useKeepAwake } from 'expo-keep-awake'
 
-const TrackMap = ({ follow }) => {
+const TrackMap = ({ follow, satellite }) => {
     useKeepAwake()
     const { state: { currentLocation, locations } } = useContext(LocationContext)
     if (!currentLocation) {
@@ -12,7 +12,7 @@ const TrackMap = ({ follow }) => {
     }
     return (
         <MapView
-            mapType='standard'
+            mapType={satellite ? 'hybrid' : 'standard'}
             style={styles.map}
             initialRegion={{
                 ...currentLocation.coords,
@@ -28,13 +28,13 @@ const TrackMap = ({ follow }) => {
             <Circle
                 center={currentLocation.coords}
                 radius={33}
-                strokeColor='black'
+                strokeColor={satellite ? 'white' : 'black'}
                 strokeWidth={3}
                 fillColor='#5090ff50'
             />
             <Polyline
                 coordinates={locations.map(loc => loc.coords)}
-                strokeColor='black'
+                strokeColor={satellite ? 'white' : 'black'}
             />
         </MapView>
     )
