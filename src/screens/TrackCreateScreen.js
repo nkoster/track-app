@@ -31,7 +31,7 @@ const TrackCreateScreen = ({ isFocused }) => {
                     <CheckBox
                         style={{ width: '50%', padding: 1 }}
                         rightTextStyle={{ marginLeft: 0, paddingLeft: 0 }}
-                        title='keep centered'
+                        title='follow'
                         onPress={_ => setFollow(!follow)}
                         checked={follow}
                     />
