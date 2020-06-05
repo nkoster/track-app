@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
@@ -42,7 +42,7 @@ const TrackForm = _ => {
                                 onPress={data => {
                                     setSavePressed(true)
                                     saveTrack(data)}} />
-                            : <Text style={styles.wait}>saving {name}, please wait...</Text>
+                            : <ActivityIndicator size={50} color='#600' />
                         : <Button
                             buttonStyle={{backgroundColor:'#5090ff'}}
                             title='start tracker'
