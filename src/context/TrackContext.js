@@ -5,6 +5,8 @@ const trackReducer = (state, action) => {
     switch(action.type) {
         case 'fetchTracks':
             return action.payload
+        case 'deleteTrack':
+            return state.filter(item => item._id !== action.payload)
         default:
             return state
     }
@@ -22,12 +24,7 @@ const createTrack = _ => async (name, locations) => {
 const deleteTrack = dispatch => async id => {
     try {
         await trackerApi.post('/delete', { id })
-        try {
-            const response = await trackerApi.get('/tracks')
-            dispatch({ type: 'fetchTracks', payload: response.data })
-        } catch (err) {
-            console.log('error getting tracks', err.message)
-        }
+        dispatch({ type: 'deleteTrack', payload: id})
     } catch (err) {
         console.log('error deleting track', err.message)
     }
