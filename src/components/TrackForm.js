@@ -1,8 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
+import { NavigationEvents } from 'react-navigation'
 
 const TrackForm = _ => {
     const {
@@ -13,11 +14,11 @@ const TrackForm = _ => {
     } = useContext(LocationContext)
     const [saveTrack] = useSaveTrack()
     const [savePressed, setSavePressed] = useState(false)
-    useEffect(_ => {
-        setSavePressed(false)
-    })
     return (
         <View>
+            <NavigationEvents
+                onWillBlur={_ => setSavePressed(false)}
+            />
             <Input
                 value={name}
                 onChangeText={changeName}
@@ -32,12 +33,16 @@ const TrackForm = _ => {
                         title='stop tracker'
                         onPress={stopRecording} />
                     : !recording && locations.length && name
-                        ? <Button
-                            buttonStyle={{backgroundColor:'#496'}}
-                            title={savePressed ? 'saving, please wait...' : 'save this track'}
-                            onPress={async data => {
-                                setSavePressed(true)
-                                await saveTrack(data)}} />
+                        ? !savePressed 
+                            ? <Button
+                                buttonStyle={savePressed
+                                    ? {backgroundColor:'#888'}
+                                    : {backgroundColor:'#496'}}
+                                title='save this track'
+                                onPress={data => {
+                                    setSavePressed(true)
+                                    saveTrack(data)}} />
+                            : <Text style={styles.wait}>saving {name}, please wait...</Text>
                         : <Button
                             buttonStyle={{backgroundColor:'#5090ff'}}
                             title='start tracker'
@@ -46,7 +51,6 @@ const TrackForm = _ => {
                             }} />
                 : null
             }
-            { savePressed ? <Text style={styles.wait}>saving data...</Text> : null }
             </View>
         </View>
     )
@@ -55,8 +59,9 @@ const TrackForm = _ => {
 const styles = StyleSheet.create({
     wait: {
         textAlign: 'center',
-        padding: 20,
-        fontSize: 16
+        padding: 10,
+        fontSize: 16,
+        color: '#666'
     }
 })
 
