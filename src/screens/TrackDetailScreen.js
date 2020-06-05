@@ -8,6 +8,7 @@ const TrackDetailScreen = ({ navigation }) => {
     const _id = navigation.getParam('_id')
     const { state } = useContext(TrackContext)
     const track = state.find(item => item._id === _id)
+    if (!track) return navigation.navigate('TrackListScreen')
     const initialCoords = track.locations[0].coords
     return (
         <View>
