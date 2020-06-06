@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Context as TrackContext } from '../context/TrackContext'
 import MapView, { Polyline } from 'react-native-maps'
 import { Entypo } from '@expo/vector-icons'
+import distance from '../util/distance'
 
 const TrackDetailScreen = ({ navigation }) => {
     const _id = navigation.getParam('_id')
@@ -10,6 +11,18 @@ const TrackDetailScreen = ({ navigation }) => {
     const track = state.find(item => item._id === _id)
     if (!track) return navigation.navigate('TrackListScreen')
     const initialCoords = track.locations[0].coords
+    let totalDistance = 0
+    let currentCoords = {
+        latitude: track.locations[0].coords.latitude,
+        longitude: track.locations[0].coords.longitude
+    }
+    track.locations.forEach(location => {
+        totalDistance += distance(
+            currentCoords.latitude, currentCoords.longitude,
+            location.coords.latitude, location.coords.longitude
+        )
+        currentCoords = {...location.coords}
+    })
     return (
         <View>
             <MapView
@@ -23,7 +36,7 @@ const TrackDetailScreen = ({ navigation }) => {
                 <Polyline
                     coordinates={track.locations.map(location => location.coords)}
                 />
-                <Text style={styles.title}>{track.name}</Text>
+                <Text style={styles.title}>{track.name} {totalDistance.toFixed(3)}m</Text>
             </MapView>
         </View>
     )
