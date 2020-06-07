@@ -22,8 +22,10 @@ const TrackForm = ({ satellite }) => {
             <Input
                 value={name}
                 onChangeText={changeName}
-                inputStyle={{textAlign: 'center'}}
+                inputStyle={{textAlign: 'center', fontWeight: 'bold'}}
                 placeholder='enter a track name here'
+                autoCapitalize='none'
+                autoCorrect={false}
             />
             <View style={{width: 200, marginTop: 14}}>
             {
