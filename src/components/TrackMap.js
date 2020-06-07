@@ -42,7 +42,10 @@ const TrackMap = ({ follow, satellite }) => {
 
 const styles = StyleSheet.create({
     map: {
-        height: 404
+        position: 'absolute',
+        top: 60, left: 0, right: 0, bottom: 0,
+        height: '100%',
+        alignSelf: 'stretch'
     }
 })
 
