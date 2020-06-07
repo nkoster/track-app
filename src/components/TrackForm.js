@@ -5,7 +5,7 @@ import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
 import { NavigationEvents } from 'react-navigation'
 
-const TrackForm = _ => {
+const TrackForm = ({ satellite }) => {
     const {
         state: { name, recording, locations },
         startRecording,
@@ -15,16 +15,17 @@ const TrackForm = _ => {
     const [saveTrack] = useSaveTrack()
     const [savePressed, setSavePressed] = useState(false)
     return (
-        <View>
+        <View style={{alignItems: 'center'}}>
             <NavigationEvents
                 onWillBlur={_ => setSavePressed(false)}
             />
             <Input
                 value={name}
                 onChangeText={changeName}
+                inputStyle={{textAlign: 'center'}}
                 placeholder='enter a track name here'
             />
-            <View>
+            <View style={{width: 200}}>
             {
                 name
                 ?   recording
@@ -42,7 +43,7 @@ const TrackForm = _ => {
                                 onPress={data => {
                                     setSavePressed(true)
                                     saveTrack(data)}} />
-                            : <ActivityIndicator size={40} color='#600' />
+                            : <ActivityIndicator size={40} color={satellite ? 'white' : 'black'} />
                         : <Button
                             buttonStyle={{backgroundColor:'#5090ff'}}
                             title='start tracker'
