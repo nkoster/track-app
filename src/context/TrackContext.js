@@ -17,8 +17,8 @@ const fetchTracks = dispatch => async _ => {
     dispatch({ type: 'fetchTracks', payload: response.data })
 }
 
-const createTrack = _ => async (name, locations) => {
-    await trackerApi.post('/track', { name, locations })
+const createTrack = _ => async (name, locations, distance, duration) => {
+    await trackerApi.post('/track', { name, locations, distance, duration })
 }
 
 const deleteTrack = dispatch => async id => {
