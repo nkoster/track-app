@@ -46,7 +46,7 @@ const TrackDetailScreen = ({ navigation }) => {
 TrackDetailScreen.navigationOptions = ({navigation}) => {
     const _id = navigation.getParam('_id')
     return {
-        title: 'track details',
+        title: 'details',
         headerRight: _ => (
             <TouchableOpacity
                 onPress={_ => navigation.navigate('TrackDeleteScreen', { _id })}
