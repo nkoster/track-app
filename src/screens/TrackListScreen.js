@@ -21,7 +21,11 @@ const TrackListScreen = ({ navigation }) => {
                                 (new Date(parseInt(item._id.substring(0,8), 16) * 1000))
                                 .toString()
                             }</Text>
-                            <ListItem chevron title={`${item.name}`} />
+                            <ListItem
+                                chevron
+                                title={`${item.name}`}
+                                titleStyle={{fontWeight: 'bold', color: '#444'}}
+                            />
                         </TouchableOpacity>
                     )
                 }}
