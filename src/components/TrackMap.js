@@ -50,7 +50,15 @@ const TrackMap = ({ follow, satellite }) => {
                 coordinates={locations.map(loc => loc.coords)}
                 strokeColor={satellite ? 'white' : 'black'}
             />
-            <Text style={styles.distance}>{(totalDistance / 1000).toFixed(3)} km</Text>
+            <Text style={{
+                textAlign: 'center',
+                fontSize: 14,
+                fontWeight: 'bold',
+                paddingTop: 4,
+                paddingBottom: 4,
+                backgroundColor: satellite ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)',
+                color: satellite ? 'white': 'black'
+            }}>{(totalDistance / 1000).toFixed(3)} km</Text>
         </MapView>
     )
 }
@@ -61,14 +69,6 @@ const styles = StyleSheet.create({
         top: 60, left: 0, right: 0, bottom: 0,
         height: '100%',
         alignSelf: 'stretch'
-    },
-    distance: {
-        textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 'bold',
-        paddingTop: 4,
-        paddingBottom: 4,
-        backgroundColor: 'rgba(255,255,255,0.5)'
     }
 })
 
