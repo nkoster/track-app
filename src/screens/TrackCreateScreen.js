@@ -30,12 +30,14 @@ const TrackCreateScreen = ({ isFocused }) => {
                         checked={follow}
                         checkedColor='#5090ff'
                     />
+                    <View style={{width:106}}></View>
                     <CheckBox
                         title='satellite'
                         onPress={_ => setSatellite(!satellite)}
                         checked={satellite}
                         checkedColor='#5090ff'
-                        />            
+                        iconRight
+                    />            
                 </View>
             </View>
         </SafeAreaView>
@@ -60,17 +62,14 @@ const styles = StyleSheet.create({
     },
     checkBoxContainer: {
         position: 'absolute',
-        bottom: 0,
+        bottom: 6,
         height: 60,
         width: '100%',
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1
+        justifyContent: 'center'
     },
     checkboxView: {
         flexDirection: 'row',
-        alignItems: 'center'
     },
     trackForm: {
         position: 'absolute',
