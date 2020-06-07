@@ -11,18 +11,6 @@ const TrackDetailScreen = ({ navigation }) => {
     const track = state.find(item => item._id === _id)
     if (!track) return navigation.navigate('TrackListScreen')
     const initialCoords = track.locations[0].coords
-    let totalDistance = 0
-    let currentCoords = {
-        latitude: track.locations[0].coords.latitude,
-        longitude: track.locations[0].coords.longitude
-    }
-    track.locations.forEach(location => {
-        totalDistance += distance(
-            currentCoords.latitude, currentCoords.longitude,
-            location.coords.latitude, location.coords.longitude
-        )
-        currentCoords = {...location.coords}
-    })
     return (
         <View>
             <MapView
@@ -36,8 +24,7 @@ const TrackDetailScreen = ({ navigation }) => {
                 <Polyline
                     coordinates={track.locations.map(location => location.coords)}
                 />
-                <Text style={styles.title}>{track.name}, {(totalDistance / 1000)
-                    .toFixed(3)} km</Text>
+                <Text style={styles.title}>{track.name}, {track.distance} km, {(track.duration / 60).toFixed(1)} min</Text>
             </MapView>
         </View>
     )
