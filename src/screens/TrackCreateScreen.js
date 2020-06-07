@@ -8,7 +8,6 @@ import TrackMap from '../components/TrackMap'
 import { Context as LocationContext } from '../context/LocationContext'
 import useLocation from '../hooks/useLocation'
 import TrackForm from '../components/TrackForm'
-import Spacer from '../components/Spacer'
 
 const TrackCreateScreen = ({ isFocused }) => {
     const { state: { recording }, addLocation } = useContext(LocationContext)
@@ -19,29 +18,24 @@ const TrackCreateScreen = ({ isFocused }) => {
     }, [recording])
     const [err] = useLocation(isFocused || recording, callback)
     return (
-        <SafeAreaView forceInset={{ top: 'always' }}>
+        <SafeAreaView style={{flex: 1}} forceInset={{ top: 'always' }}>
             { err ? <Text style={styles.error}>Problem: enable location services first!</Text> : null }
-            <Spacer />
-            <Spacer>
-                <TrackForm />
-            </Spacer>
-            <TrackMap follow={follow} satellite={satellite} />
+            <TrackMap style={{flex: 4}} follow={follow} satellite={satellite} />
+            <TrackForm style={styles.trackForm} satellite={satellite} />
             <View style={styles.checkBoxContainer}>
                 <View style={styles.checkboxView}>
                     <CheckBox
-                        style={{ width: '50%', padding: 1 }}
-                        rightTextStyle={{ marginLeft: 0, paddingLeft: 0 }}
                         title='follow'
                         onPress={_ => setFollow(!follow)}
                         checked={follow}
+                        checkedColor='#5090ff'
                     />
                     <CheckBox
-                        style={{ width: '50%', padding: 1 }}
-                        rightTextStyle={{ marginLeft: 0, paddingLeft: 0 }}
                         title='satellite'
                         onPress={_ => setSatellite(!satellite)}
                         checked={satellite}
-                    />            
+                        checkedColor='#5090ff'
+                        />            
                 </View>
             </View>
         </SafeAreaView>
@@ -65,13 +59,22 @@ const styles = StyleSheet.create({
         marginTop: 100
     },
     checkBoxContainer: {
+        position: 'absolute',
+        bottom: 0,
+        height: 60,
+        width: '100%',
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'        
+        alignItems: 'center',
+        flex: 1
     },
     checkboxView: {
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    trackForm: {
+        position: 'absolute',
+        top: 60
     }
 })
 
