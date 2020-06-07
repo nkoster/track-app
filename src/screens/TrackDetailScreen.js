@@ -36,7 +36,8 @@ const TrackDetailScreen = ({ navigation }) => {
                 <Polyline
                     coordinates={track.locations.map(location => location.coords)}
                 />
-                <Text style={styles.title}>{track.name}, {totalDistance.toFixed(3)}m</Text>
+                <Text style={styles.title}>{track.name}, {(totalDistance / 1000)
+                    .toFixed(3)} km</Text>
             </MapView>
         </View>
     )
