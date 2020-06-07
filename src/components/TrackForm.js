@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { View, StyleSheet, ActivityIndicator } from 'react-native'
+import { View, ActivityIndicator } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { Context as LocationContext } from '../context/LocationContext'
 import useSaveTrack from '../hooks/useSaveTrack'
@@ -25,7 +25,7 @@ const TrackForm = ({ satellite }) => {
                 inputStyle={{textAlign: 'center'}}
                 placeholder='enter a track name here'
             />
-            <View style={{width: 200}}>
+            <View style={{width: 200, marginTop: 14}}>
             {
                 name
                 ?   recording
@@ -56,14 +56,5 @@ const TrackForm = ({ satellite }) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    wait: {
-        textAlign: 'center',
-        padding: 10,
-        fontSize: 16,
-        color: '#666'
-    }
-})
 
 export default TrackForm
