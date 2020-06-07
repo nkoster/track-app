@@ -24,8 +24,9 @@ const TrackListScreen = ({ navigation }) => {
                             <ListItem
                                 chevron
                                 title={item.name}
-                                titleStyle={{fontWeight: 'bold', fontSize: 17, color: '#444'}}
-                                subtitle={`${(item.distance/1000).toFixed(3)} km  \u2014  ${(item.duration/60).toFixed(1)} min`}
+                                titleStyle={{fontWeight: 'bold', fontSize: 17, color: '#444', textAlign: 'center'}}
+                                subtitle={`${(item.distance/1000).toFixed(3)} km  /  ${(item.duration/60).toFixed(1)} min`}
+                                subtitleStyle={{textAlign: 'center', marginTop: 4}}
                             />
                         </TouchableOpacity>
                     )
@@ -45,7 +46,9 @@ const styles = StyleSheet.create({
         color: '#666',
         marginTop: 10,
         paddingLeft: 6,
-        paddingTop: 3
+        paddingTop: 3,
+        marginBottom: 0,
+        textAlign: 'center'
     }
 })
 
