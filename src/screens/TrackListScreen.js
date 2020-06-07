@@ -23,8 +23,8 @@ const TrackListScreen = ({ navigation }) => {
                             }</Text>
                             <ListItem
                                 chevron
-                                title={`${item.name}, ${(item.distance/1000).toFixed(3)} km, ${(item.duration/60).toFixed(1)} min`}
-                                titleStyle={{fontWeight: 'bold', color: '#444'}}
+                                title={`${item.name}    ${(item.distance/1000).toFixed(3)} km    ${(item.duration/60).toFixed(1)} min`}
+                                titleStyle={{fontWeight: 'bold', fontSize: 16, color: '#444'}}
                             />
                         </TouchableOpacity>
                     )
