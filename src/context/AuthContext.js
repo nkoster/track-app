@@ -25,7 +25,7 @@ const tryLocalSignin = dispatch => async _ => {
     const token = await AsyncStorage.getItem('token')
     if (token) {
         dispatch({ type: 'signin', payload: token })
-        navigate('TrackListScreen', {})
+        navigate('TrackCreateScreen', {})
     } else {
         navigate('SignupScreen')
     }
@@ -36,7 +36,7 @@ const signup = dispatch => async ({email, password}) => {
         const response = await trackerApi.post('/signup', { email, password })
         await AsyncStorage.setItem('token', response.data.token)
         dispatch({ type: 'signin', payload: response.data.token})
-        navigate('TrackListScreen', {})
+        navigate('TrackCreateScreen', {})
     } catch(err) {
         dispatch({ type: 'add_error', payload: `${email} already in use` })
     }
@@ -47,7 +47,7 @@ const signin = dispatch => async ({ email, password }) => {
         const response = await trackerApi.post('/signin', { email, password })
         await AsyncStorage.setItem('token', response.data.token)
         dispatch({ type: 'signin', payload: response.data.token})
-        navigate('TrackListScreen', {})
+        navigate('TrackCreateScreen', {})
     } catch(err) {
         dispatch({ type: 'add_error', payload: 'Something went wrong' })
     }
