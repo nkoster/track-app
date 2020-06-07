@@ -60,7 +60,7 @@ const TrackMap = ({ follow, satellite }) => {
                 paddingBottom: 4,
                 backgroundColor: satellite ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.5)',
                 color: satellite ? 'white': 'black'
-            }}>{(totalDistance / 1000).toFixed(3)} km     {(totalTime/1000/60).toFixed(1)} min</Text>
+            }}>{(totalDistance / 1000).toFixed(3)} km   /   {(totalTime/1000/60).toFixed(1)} min</Text>
         </MapView>
     )
 }
