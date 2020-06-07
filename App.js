@@ -35,9 +35,8 @@ const switchNavigator = createSwitchNavigator({
     SignupScreen, SigninScreen
   }),
   mainFlow: createBottomTabNavigator({
-    trackListFlow,
-    TrackCreateScreen, AccountScreen
-  })
+        TrackCreateScreen, trackListFlow, AccountScreen
+  }, { order: ['TrackCreateScreen', 'trackListFlow', 'AccountScreen'] })
 })
 
 const App = createAppContainer(switchNavigator)
