@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         fontSize: 17,
-        fontWeight: 'bold',
+        fontWeight: 'normal',
         marginTop: 150,
         marginBottom: 20,
         color: 'rgba(210,50,75,1.0)'
