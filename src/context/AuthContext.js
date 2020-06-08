@@ -27,7 +27,7 @@ const tryLocalSignin = dispatch => async _ => {
         dispatch({ type: 'signin', payload: token })
         navigate('TrackCreateScreen', {})
     } else {
-        navigate('SignupScreen')
+        navigate('SigninScreen')
     }
 }
 
